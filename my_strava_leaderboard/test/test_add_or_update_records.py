@@ -46,6 +46,6 @@ def test_insert_or_update_records():
     assert True
 
 
-test_update_records()
+test_insert_or_update_records()
 
 connection.close()

@@ -20,14 +20,16 @@ def insert_or_update_records(df, db_connection):
 
     cursor = db_connection.cursor()
 
-    primary_key_set = [record[0] for record in cursor.fetch_all()]
+    cursor.execute('SELECT * FROM my_leaderboard;')
+
+    primary_key_set = [record[0] for record in cursor.fetchall()]
 
     df['update'] = df['segment_id'].apply(lambda x: x in primary_key_set)
 
-    update_df = df[df['update'] is True]
+    update_df = df[df['update'] == True]
     update_records(update_df, db_connection)
 
-    df = df[df['update'] is False]
+    df = df[df['update'] == False]
     insert_records(df, db_connection)
 
     return
