@@ -37,7 +37,6 @@ def test_update_records():
 
 def test_insert_or_update_records():
 
-    initial_db_snapshot = pandas.read_csv('./test_data/my_strava_leaderboard_test_data_initial.csv')
     new_data = pandas.read_csv('./test_data/my_strava_leaderboard_test_data_new_data.csv')
     final_db_snapshot = pandas.read_csv('./test_data/my_strava_leaderboard_test_data_final.csv')
 
@@ -47,5 +46,7 @@ def test_insert_or_update_records():
 
 
 test_insert_or_update_records()
+# test_insert_records()
+# test_update_records()
 
 connection.close()

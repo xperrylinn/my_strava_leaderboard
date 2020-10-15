@@ -1,6 +1,4 @@
-import os
 import pandas
-import psycopg2
 
 
 def insert_or_update_records(df, db_connection):
@@ -22,7 +20,7 @@ def insert_or_update_records(df, db_connection):
 
     cursor.execute('SELECT * FROM my_leaderboard;')
 
-    primary_key_set = [record[0] for record in cursor.fetchall()]
+    primary_key_set = set([record[0] for record in cursor.fetchall()])
 
     df['update'] = df['segment_id'].apply(lambda x: x in primary_key_set)
 

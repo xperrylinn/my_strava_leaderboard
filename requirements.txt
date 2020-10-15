@@ -1,2 +1,4 @@
 pandas
 airflow
+django==2.1.1
+
