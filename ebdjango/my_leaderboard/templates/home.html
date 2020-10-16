@@ -1,4 +1,39 @@
 <p>Hi</p>
-{% for record in records %}
-    <p>{{record.segment_id}}, {{record.rank}}</p>
-{% endfor %}
+<table>
+    <tr>
+        <th>
+            Segment ID
+        </th>
+        <th>
+            Rank
+        </th>
+        <th>
+            Total Entries
+        </th>
+        <th>
+            Number of Attempts
+        </th>
+        <th>
+            Read Date
+        </th>
+    </tr>
+    {% for record in records %}
+        <tr>
+            <td>
+                {{record.segment_id}}
+            </td>
+            <td>
+                {{record.rank}}
+            </td>
+            <td>
+                {{record.total_entries}}
+            </td>
+            <td>
+                {{record.num_attempts}}
+            </td>
+            <td>
+                {{record.read_date}}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
