@@ -1,5 +1,7 @@
+from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from sqlalchemy import create_engine
+from my_leaderboard.models import MyLeaderboard
 import pandas
 import os
 
@@ -19,3 +21,13 @@ def index(request):
     )
 
     return HttpResponse(df.to_string())
+
+
+class HomePageView(TemplateView):
+
+    template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['records'] = MyLeaderboard.objects.all()
+        return context
